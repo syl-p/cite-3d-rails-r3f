@@ -11,9 +11,7 @@ export default function CommentForm({part_id}) {
         e.preventDefault();
         post(`/parts/${part_id}/comments`, {
             onSuccess: () => {
-                setData({
-                    content: ""
-                })
+                setData("content", "")
             },
             onError: () => {
             }
@@ -22,6 +20,8 @@ export default function CommentForm({part_id}) {
 
     return <form onSubmit={handleSubmit}>
         <Textarea onChange={e => setData('content', e.target.value)} defaultValue={data.content}></Textarea>
-        <Button type="submit" className="my-3">Commenter</Button>
+        <div className="flex justify-end">
+            <Button type="submit" className="my-3" disabled={data.content === "" || processing}>Commenter</Button>
+        </div>
     </form>
 }

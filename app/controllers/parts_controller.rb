@@ -19,7 +19,7 @@ class PartsController < ApplicationController
           created_at: comment.created_at,
           user: {
             id: comment.user.id,
-            name: comment.user.username
+            username: comment.user.username
           }
         }
       end

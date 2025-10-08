@@ -20,11 +20,14 @@ export default function show({current_user, part, media, comments}) {
         </div>
     }
 
-
     const Comment = ({comment}) => {
-        return <div className="border rounded p-4">
-            <p>{comment.user.username}, le {comment.created_at}</p>
-            <p>{comment.content}</p>
+        return <div className="border rounded">
+            <div className="bg-primary-foreground p-3">
+                <p>{comment.user.username}, le {comment.created_at}</p>
+            </div>
+            <div className="p-3">
+                <p>{comment.content}</p>
+            </div>
         </div>
     }
 
@@ -70,7 +73,9 @@ export default function show({current_user, part, media, comments}) {
                 <p>{part.body}</p>
             </TabsContent>
             <TabsContent value="comments">
-                <CommentForm part_id={part.id}/>
+                <div className="mb-6">
+                    <CommentForm part_id={part.id}/>
+                </div>
                 <ul className="space-y-3">
                     {comments && comments.map((comment) =>
                         <li>

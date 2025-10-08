@@ -23,8 +23,18 @@ export default function Layout({children}) {
             className: "border p-3 flex flex-col items-center justify-center"
         };
         return <div className="flex">
-            {previous && <Link href={`/parts/${previous}`} {...props}>P</Link>}
-            {next && <Link href={`/parts/${next}`} {...props}>S</Link>}
+            {previous && <Link href={`/parts/${previous.id}`} {...props}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                     stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
+                </svg>
+            </Link>}
+            {next && <Link href={`/parts/${next.id}`} {...props}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                     stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                </svg>
+            </Link>}
         </div>
     }
 
