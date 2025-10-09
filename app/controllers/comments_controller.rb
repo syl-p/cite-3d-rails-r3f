@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_comment, only: [ :update, :destroy ]
 
   def update
     if @comment.update(comment_params)

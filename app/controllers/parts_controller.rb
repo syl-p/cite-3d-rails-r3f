@@ -1,5 +1,5 @@
 class PartsController < ApplicationController
-  allow_unauthenticated_access only: [:index, :show]
+  allow_unauthenticated_access only: [ :index, :show ]
   before_action :set_part, only: %i[ show edit update destroy ]
 
   # GET /parts or /parts.json

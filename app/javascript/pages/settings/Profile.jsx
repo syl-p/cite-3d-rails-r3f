@@ -1,17 +1,21 @@
-import { useForm, usePage } from '@inertiajs/react'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
+import {useForm} from "@inertiajs/react";
+import {Label} from "@/components/ui/label.jsx";
+import {Input} from "@/components/ui/input.jsx";
+import {Button} from "@/components/ui/button.jsx";
 
-export default function Settings({user}) {
-    const { data, setData, put, processing, errors } = useForm({
+export default function Profile({user}) {
+    const {data, setData, put, processing, errors} = useForm({
         username: user.username || '',
         email_address: user.email_address || '',
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        put(`/users/${user.id}`)
+        put(`/users/${user.id}`, {
+            onSuccess: () => {
+                // TODO: Flash
+            }
+        })
     }
 
     return <form onSubmit={handleSubmit} className="space-y-4">

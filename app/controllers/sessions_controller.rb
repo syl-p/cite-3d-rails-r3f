@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: "Connecté avec succès"
     else
       # redirect_to new_session_path, alert: "Try another email address or password."
-      render inertia: 'sessions/New',
+      render inertia: "sessions/New",
              props: {
                errors: { auth: "Email ou mot de passe invalide" },
                email: params[:email]
