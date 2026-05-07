@@ -1,4 +1,4 @@
-import {useForm} from "@inertiajs/react";
+import {useForm, router} from "@inertiajs/react";
 import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {Button} from "@/components/ui/button.jsx";
@@ -50,7 +50,7 @@ export default function Profile({user}) {
                 disabled={processing}
                 onClick={() => {
                     if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
-                        router.delete(`/users/${user.id}`)
+                        router.delete(`/settings/profile/${user.id}`)
                     }
                 }}
             >

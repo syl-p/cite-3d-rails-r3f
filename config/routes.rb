@@ -23,4 +23,8 @@ Rails.application.routes.draw do
     post ":id/media", to: "parts/media#create"
     post ":id/comments", to: "parts/comments#create"
   end
+
+  namespace "settings" do
+    resources "profile", only: [:update, :destroy]
+  end
 end

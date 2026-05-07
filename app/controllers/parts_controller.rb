@@ -17,10 +17,10 @@ class PartsController < ApplicationController
           id: comment.id,
           content: comment.content,
           created_at: comment.created_at,
-          user: {
+          user: comment.user ? {
             id: comment.user.id,
             username: comment.user.username
-          }
+          } : {}
         }
       end
     }

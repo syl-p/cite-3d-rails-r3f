@@ -25,7 +25,7 @@ export default function FlashMessages({children}) {
     const message = flash.error || flash.notice
 
     return (
-        <div className="fixed bottom-4 right-4 z-50 w-auto max-w-md">
+        <div className="fixed bottom-8 right-8 z-50 w-auto max-w-md">
             <Alert variant={variant}>
                 {isError ?  <AlertCircleIcon/> : <CheckCircle2Icon/>}
                 <AlertTitle>{isError ? "Erreur" : "Succès"}</AlertTitle>
