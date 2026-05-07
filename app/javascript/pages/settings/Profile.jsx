@@ -40,8 +40,22 @@ export default function Profile({user}) {
             {errors.email_address && <p className="text-sm text-red-500">{errors.email_address}</p>}
         </div>
 
-        <Button type="submit" disabled={processing} className="w-full">
-            Enregistrer
-        </Button>
+        <div className="flex space-x-3">
+            <Button type="submit" disabled={processing} className="flex-1">
+                Enregistrer
+            </Button>
+            <Button
+                type="button"
+                variant="destructive"
+                disabled={processing}
+                onClick={() => {
+                    if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
+                        router.delete(`/users/${user.id}`)
+                    }
+                }}
+            >
+                Supprimer mon compte
+            </Button>
+        </div>
     </form>
 }

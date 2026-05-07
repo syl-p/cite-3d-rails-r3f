@@ -5,10 +5,12 @@ import UserDropdown from "@/components/UserDropdown.jsx";
 import LoginBtn from "./components/LoginBtn.jsx";
 import {useEffect, useState} from "react";
 import {Stats} from "@react-three/drei"
+import FlashMessages from "@/components/FlashMessages.jsx";
 
 export default function Layout({children}) {
     const {current_user, part, parts} = usePage().props
     const [currentIndex, setCurrentIndex] = useState(0);
+
     useEffect(() => {
         if (part) {
             const currentIndex = parts.findIndex(p => p.id === part.id)
@@ -52,7 +54,7 @@ export default function Layout({children}) {
                     </Link>
                 </div>
                 <div className="flex-1 flex space-x-3 items-center justify-end">
-                    {current_user ? <UserDropdown user={current_user}/> : <LoginBtn/>}
+                    {current_user ? <UserDropdown user={current_user}/> : <LoginBtn>Se connecter</LoginBtn>}
                 </div>
             </header>
             <section className="lg:grid lg:grid-cols-6 lg:gap-6">
@@ -71,6 +73,8 @@ export default function Layout({children}) {
                     {children}
                 </section>}
             </section>
+
+            <FlashMessages />
         </main>
     )
 }

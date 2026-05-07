@@ -1,6 +1,7 @@
 import {useForm} from "@inertiajs/react";
 import {Button} from "@/components/ui/button.jsx";
 import {Textarea} from "@/components/ui/textarea.jsx";
+import {Label} from "@/components/ui/label.jsx";
 
 export default function CommentForm({part_id}) {
     const {data, setData, error, processing, post} = useForm({
@@ -19,6 +20,7 @@ export default function CommentForm({part_id}) {
     }
 
     return <form onSubmit={handleSubmit}>
+        <Label for="content" className="mb-3">Vous avez déjà visité cette partie de la cité ? Donnez nous vos impressions.</Label>
         <Textarea onChange={e => setData('content', e.target.value)} defaultValue={data.content}></Textarea>
         <div className="flex justify-end">
             <Button type="submit" className="my-3" disabled={data.content === "" || processing}>Commenter</Button>

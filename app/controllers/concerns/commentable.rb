@@ -4,7 +4,9 @@ module Commentable
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = Current.user
+
     if @comment.save
+      flash[:notice] = "Super ! Votre commentaire à bien été ajouté !"
       redirect_to @commentable
     else
       # render json: { errors: @medium.errors }, status: :unprocessable_entity

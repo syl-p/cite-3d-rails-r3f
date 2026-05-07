@@ -42,7 +42,7 @@ export default function Experience() {
                 `#include <dithering_fragment>`,
                 `
                 // Calcul des coordonnées de la texture alpha
-                vec2 textureCoords = (vPosition.xz * 0.01) + 0.5;
+                vec2 textureCoords = (vPosition.xz * 0.0115) + 0.5;
                 vec4 textureColor = texture2D(alphaTexture, textureCoords);
                 float alpha = textureColor.a;
 

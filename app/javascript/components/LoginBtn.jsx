@@ -1,9 +1,11 @@
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "./ui/dialog.jsx";
 import New from "../pages/sessions/New.jsx";
 
-export default function LoginBtn() {
+export default function LoginBtn({children}) {
     return <Dialog>
-        <DialogTrigger>Se connecter</DialogTrigger>
+        <DialogTrigger>
+            {children}
+        </DialogTrigger>
         <DialogContent>
             <DialogHeader>
                 <DialogTitle>Connection</DialogTitle>

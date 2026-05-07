@@ -9,6 +9,14 @@ class Settings::ProfileController < ApplicationController
     end
   end
 
+  def destroy
+    terminate_session
+
+    if @user.destroy
+      redirect_to root_path, notice: "Votre compte à bien été supprimé."
+    end
+  end
+
   private
 
   def set_user
