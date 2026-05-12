@@ -6,6 +6,7 @@ import LoginBtn from "./components/LoginBtn.jsx";
 import {useEffect, useState} from "react";
 import {Stats} from "@react-three/drei"
 import FlashMessages from "@/components/FlashMessages.jsx";
+import SplashScreen from "@/components/SplashScreen.jsx";
 
 export default function Layout({children}) {
     const {current_user, part, parts} = usePage().props
@@ -41,7 +42,7 @@ export default function Layout({children}) {
     }
 
     return (
-        <main className="p-4">
+        <main className="p-4 relative">
             <header className="z-50 px-8 fixed flex items-center justify-between top-8 left-0 w-full">
                 <div>
                     <Link href="/" className="uppercase font-spectral flex space-x-3 items-center">
@@ -73,7 +74,7 @@ export default function Layout({children}) {
                     {children}
                 </section>}
             </section>
-
+            <SplashScreen/>
             <FlashMessages />
         </main>
     )

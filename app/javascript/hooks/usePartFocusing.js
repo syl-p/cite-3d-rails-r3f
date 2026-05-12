@@ -3,11 +3,11 @@ import {useFrame, useThree} from "@react-three/fiber";
 import {useEffect, useState} from "react";
 import * as THREE from "three";
 
-export default function usePartFocusing(model, initalCameraPosition) {
+export default function usePartFocusing(model, defaultCameraPosition, defaultTarget) {
     const {part} = usePage().props
     const {camera, controls} = useThree()
-    const [target, setTarget] = useState(new THREE.Vector3())
-    const [offset, setOffset] = useState(new THREE.Vector3())
+    const [target, setTarget] = useState(defaultTarget)
+    const [offset, setOffset] = useState(defaultCameraPosition)
 
     useFrame(() => {
         if(target && offset && controls && camera) {
@@ -29,8 +29,8 @@ export default function usePartFocusing(model, initalCameraPosition) {
                 }
             })
         } else if(controls) {
-            setTarget(new THREE.Vector3())
-            setOffset(initalCameraPosition)
+            setTarget(defaultTarget)
+            setOffset(defaultCameraPosition)
         }
-    }, [part, camera, controls, model.scene])
+    }, [part, camera, controls, model.scene, defaultTarget, defaultCameraPosition])
 }
