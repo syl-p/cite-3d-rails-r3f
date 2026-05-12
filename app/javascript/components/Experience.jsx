@@ -139,9 +139,9 @@ export default function Experience() {
     usePartFocusing(model, defaultCameraPosition, defaultTarget)
 
     return <>
-        <PerspectiveCamera makeDefault
-                           position={defaultCameraPosition} />
-        <OrbitControls makeDefault target={defaultTarget}/>
+        <PerspectiveCamera makeDefault fov={40}
+                           position={[immersivePosition.x, immersivePosition.y, immersivePosition.z]} />
+        <OrbitControls makeDefault target={[immersiveDefaultLookAt.x, immersiveDefaultLookAt.y, immersiveDefaultLookAt.z]}/>
         <directionalLight position={[1, 20, 30]}/>
         <ambientLight />
         <primitive object={model.scene} scale={0.1}  onClick={() => setShowSpots(true)}/>
