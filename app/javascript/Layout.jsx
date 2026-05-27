@@ -7,10 +7,13 @@ import {useEffect, useState} from "react";
 import {Stats} from "@react-three/drei"
 import FlashMessages from "@/components/FlashMessages.jsx";
 import SplashScreen from "@/components/SplashScreen.jsx";
+import useAppStore from "@/stores/useAppStore";
 
 export default function Layout({children}) {
     const {current_user, part, parts} = usePage().props
     const [currentIndex, setCurrentIndex] = useState(0);
+    const showSpots = useAppStore((s) => s.showSpots)
+    const setShowSpots = useAppStore((s) => s.setShowSpots)
 
     useEffect(() => {
         if (part) {
