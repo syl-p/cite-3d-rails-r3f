@@ -5,24 +5,16 @@ class PartsController < ApplicationController
   # GET /parts or /parts.json
   def index
     @parts = Part.all
+
+    render inertia: "parts/index", props: {
+      parts: PartResource.new(@parts).to_h
+    }
   end
 
   # GET /parts/1 or /parts/1.json
   def show
     render inertia: "parts/show", props: {
-      part: @part,
-      media: @part.media.map { |medium| medium.as_json },
-      comments: @part.comments.map do |comment|
-        {
-          id: comment.id,
-          content: comment.content,
-          created_at: comment.created_at,
-          user: comment.user ? {
-            id: comment.user.id,
-            username: comment.user.username
-          } : {}
-        }
-      end
+      part: PartResource.new(@part).to_h
     }
   end
 

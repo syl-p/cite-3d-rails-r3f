@@ -28,7 +28,7 @@ export default function Experience() {
             step: 0.1,
         },
         fromSkyPosition: {
-            value: { x: 0, y: 68, z: 50 },
+            value: { x: 0, y: 38, z: 50 },
             step: 0.1,
         }
     })

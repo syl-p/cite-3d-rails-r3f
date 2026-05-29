@@ -1,16 +1,15 @@
 import {Link, usePage} from '@inertiajs/react'
 import {Canvas} from "@react-three/fiber";
 import Experience from "@/components/Experience.jsx";
-import UserDropdown from "@/components/UserDropdown.jsx";
-import LoginBtn from "./components/LoginBtn.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Stats} from "@react-three/drei"
 import FlashMessages from "@/components/FlashMessages.jsx";
 import SplashScreen from "@/components/SplashScreen.jsx";
 import useAppStore from "@/stores/useAppStore";
+import Header from './components/Header.jsx';
 
 export default function Layout({children}) {
-    const {current_user, part, parts} = usePage().props
+    const { part, parts} = usePage().props
     const [currentIndex, setCurrentIndex] = useState(0);
     const showSpots = useAppStore((s) => s.showSpots)
     const setShowSpots = useAppStore((s) => s.setShowSpots)
@@ -21,6 +20,20 @@ export default function Layout({children}) {
             setCurrentIndex(currentIndex);
         }
     }, [part, parts]);
+
+    const sectionClass = useMemo(() => {
+    const baseClass = "relative lg:sticky lg:left-0 lg:top-4 border mb-6 lg:mb-0 rounded shadow overflow-hidden transition-all duration-700 ease-in-out "
+        if (part) {
+            // Show: moitié/moitié
+            return baseClass + 'lg:w-3/6 h-[50vh] lg:h-[calc(100vh-theme(spacing.24))]'
+        } else if (showSpots) {
+            // Index + showSpots: canvas 4/6, panel 2/6
+            return baseClass + 'lg:w-4/6 h-[calc(100vh-theme(spacing.24))]'
+        } else {
+            // Index + immersif: canvas full, panel caché
+            return baseClass + 'lg:w-full h-[calc(100vh-theme(spacing.24))]'
+        }
+    }, [part, showSpots])
 
     function Pagination() {
         const previous = parts.at(currentIndex - 1)
@@ -44,41 +57,28 @@ export default function Layout({children}) {
         </div>
     }
 
-    return (
-        <main className="p-4 relative">
-            <header className="z-50 px-8 fixed flex items-center justify-between top-8 left-0 w-full">
-                <div>
-                    <Link href="/" className="uppercase font-spectral flex space-x-3 items-center">
-                        <span className="block p-2 bg-yellow-500 text-white font-bold">
-                        </span>
-                        <span className="hidden md:block">
-                          Cité<br/>
-                          de <span className="font-bold">Carcassonne</span>
-                        </span>
-                    </Link>
-                </div>
-                <div className="flex-1 flex space-x-3 items-center justify-end">
-                    {current_user ? <UserDropdown user={current_user}/> : <LoginBtn>Se connecter</LoginBtn>}
-                </div>
-            </header>
-            <section className="lg:grid lg:grid-cols-6 lg:gap-6">
+    return <>
+        <Header />
+        <main className="px-6 relative">
+            <section className="lg:flex lg:gap-6">
                 <section
-                    className={"relative lg:sticky lg:left-0 lg:top-4 border mb-6 lg:mb-0 rounded shadow overflow-hidden "
-                        + (part ? 'lg:col-span-3 h-[50vh] lg:h-[calc(100vh-theme(spacing.8))]' : 'lg:col-span-6 h-[calc(100vh-theme(spacing.8))]')}>
+                    className={sectionClass}>
                     <Canvas flat>
                         <Experience/>
-                        <Stats/>
                     </Canvas>
                     <div className="absolute left-0 bottom-0">
                         {part && <Pagination/>}
                     </div>
                 </section>
-                {part && <section className="col-span-3 lg:pt-22">
+                <section className={
+                    (part ? 'lg:w-3/6' : showSpots ? 'lg:w-2/6' : 'hidden')
+                    + ' overflow-hidden overflow-y-auto transition-all duration-600 ease-in-out'
+                }>
                     {children}
-                </section>}
+                </section>
             </section>
             <SplashScreen/>
             <FlashMessages />
         </main>
-    )
+    </>
 }

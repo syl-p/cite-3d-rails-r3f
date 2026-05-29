@@ -14,7 +14,7 @@ export default function usePartFocusing(model, defaultCameraPosition, defaultTar
     const {camera, controls} = useThree()
     const [target, setTarget] = useState(defaultTarget)
     const [offset, setOffset] = useState(defaultCameraPosition)
-
+    
     useFrame((_, delta) => {
         if(target && offset && controls && camera) {
             if(controls.target.distanceTo(target) > 0.01) {
@@ -26,8 +26,8 @@ export default function usePartFocusing(model, defaultCameraPosition, defaultTar
 
                 const targetAngle = (offset.y > 10) ? Math.PI * 0.4 : Math.PI
                 const angleStep = smoothing * 0.5 * delta
-                controls.maxPolarAngle += (targetAngle - controls.maxPolarAngle) * angleStep
 
+                controls.maxPolarAngle += (targetAngle - controls.maxPolarAngle) * angleStep
                 controls.update()
             }
         }

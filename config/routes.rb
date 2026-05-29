@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :parts
-  root "inertia_example#index"
+
+  root "parts#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -25,6 +26,6 @@ Rails.application.routes.draw do
   end
 
   namespace "settings" do
-    resources "profile", only: [:update, :destroy]
+    resources "profile", only: [ :update, :destroy ]
   end
 end
