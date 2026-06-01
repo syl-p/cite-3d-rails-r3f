@@ -33,11 +33,19 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Node.js and npm for asset compilation
+RUN curl -fsSL https://deb.nodesource.com/setup_25.x | bash -
+RUN apt-get install -y nodejs npm
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
+
+# Install JavaScript dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Copy application code
 COPY . .
@@ -46,6 +54,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN npm install
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
