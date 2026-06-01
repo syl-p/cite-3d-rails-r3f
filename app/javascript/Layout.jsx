@@ -2,6 +2,7 @@ import {Link, usePage} from '@inertiajs/react'
 import {Canvas} from "@react-three/fiber";
 import Experience from "@/components/Experience.jsx";
 import {useEffect, useMemo, useState} from "react";
+import {LevaPanel, levaStore} from "leva";
 import {Stats} from "@react-three/drei"
 import FlashMessages from "@/components/FlashMessages.jsx";
 import SplashScreen from "@/components/SplashScreen.jsx";
@@ -13,6 +14,15 @@ export default function Layout({children}) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const showSpots = useAppStore((s) => s.showSpots)
     const setShowSpots = useAppStore((s) => s.setShowSpots)
+
+    const [isDebug, setIsDebug] = useState(
+        typeof window !== 'undefined' && window.location.hash === '#debug'
+    )
+    useEffect(() => {
+        const onHashChange = () => setIsDebug(window.location.hash === '#debug')
+        window.addEventListener('hashchange', onHashChange)
+        return () => window.removeEventListener('hashchange', onHashChange)
+    }, [])
 
     useEffect(() => {
         if (part) {
@@ -79,6 +89,12 @@ export default function Layout({children}) {
             </section>
             <SplashScreen/>
             <FlashMessages />
+
+            {isDebug && (
+                <div style={{ position: 'fixed', bottom: 10, left: 10, zIndex: 1000, width: 280 }}>
+                    <LevaPanel store={levaStore} fill />
+                </div>
+            )}
         </main>
     </>
 }

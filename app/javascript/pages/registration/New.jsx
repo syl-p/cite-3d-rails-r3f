@@ -6,13 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/ca
 
 export default function New() {
     const { data, setData, post, processing, errors } = useForm({
+        username: '',
         email_address: '',
         password: '',
+        password_confirmation: ''
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        post('/session', {
+        post('/registration', {
             onSuccess: (data) => {
                 console.log(data)
             },
@@ -24,6 +26,18 @@ export default function New() {
 
     return (
     <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+            <Label htmlFor="username" className="mb-3">Username</Label>
+            <Input
+                id="username"
+                type="text"
+                value={data.username}
+                onChange={(e) => setData('username', e.target.value)}
+                required
+            />
+            {errors.username && <p className="text-sm text-red-500 mt-1">{errors.username}</p>}
+        </div>
+
         <div>
             <Label htmlFor="email_address" className="mb-3">Email</Label>
             <Input
@@ -48,7 +62,17 @@ export default function New() {
             {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
         </div>
 
-        {errors.auth && <p className="text-sm text-red-500">{errors.auth}</p>}
+        <div>
+            <Label htmlFor="password_confirmation" className="mb-3">Mot de passe</Label>
+            <Input
+                id="password_confirmation"
+                type="password"
+                value={data.password_confirmation}
+                onChange={(e) => setData('password_confirmation', e.target.value)}
+                required
+            />
+            {errors.password_confirmation && <p className="text-sm text-red-500 mt-1">{errors.password_confirmation}</p>}
+        </div>
 
         <Button type="submit" className="w-full" disabled={processing}>
             Se connecter

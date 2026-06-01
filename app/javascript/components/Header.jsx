@@ -1,6 +1,7 @@
 import { Link, usePage } from "@inertiajs/react";
 import UserDropdown from "./UserDropdown";
 import LoginBtn from "./LoginBtn";
+import NewAccountBtn from "./NewAccountBtn";
 
 export default function Header() {
     const {current_user} = usePage().props
@@ -16,7 +17,10 @@ export default function Header() {
             </Link>
         </div>
         <div className="flex-1 flex space-x-3 items-center justify-end">
-            {current_user ? <UserDropdown user={current_user}/> : <LoginBtn>Se connecter</LoginBtn>}
+            {current_user ? <UserDropdown user={current_user}/> : <>
+                <LoginBtn>Se connecter</LoginBtn>
+                <NewAccountBtn>S'inscrire</NewAccountBtn>
+            </>}
         </div>
     </header>
 }

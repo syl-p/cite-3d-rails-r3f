@@ -6,7 +6,7 @@ import {useEffect, useState, useMemo, useRef} from "react"
 import Spot from "./Spot.jsx";
 import usePartFocusing from "@/hooks/usePartFocusing";
 import useAppStore from "@/stores/useAppStore";
-import {useControls} from "leva";
+import {levaStore, useControls} from "leva";
 import {useThree} from "@react-three/fiber";
 import Title from "@/components/Title.jsx";
 
@@ -16,7 +16,6 @@ export default function Experience() {
     const alphaMap = useTexture('/alpha-map.png')
     const showSpots = useAppStore((s) => s.showSpots)
     const setShowSpots = useAppStore((s) => s.setShowSpots)
-
 
     const { immersivePosition, immersiveDefaultLookAt, fromSkyPosition } = useControls({
         immersivePosition: {
@@ -31,7 +30,7 @@ export default function Experience() {
             value: { x: 0, y: 38, z: 50 },
             step: 0.1,
         }
-    })
+    }, { store: levaStore })
 
     const { camera, controls } = useThree()
     useEffect(() => {

@@ -17,3 +17,12 @@ two:
   offset_x: 10
   offset_y: 10
   offset_z: 10
+
+three: 
+  title: Porte Narbonnaise
+  description: Découvrez la Porte Narbonnaise, l’entrée monumentale de la cité de Carcassonne. Admirez son architecture médiévale, ses tours imposantes et son rôle stratégique dans la défense de la cité. Un symbole emblématique de l’histoire militaire de Carcassonne.
+  body: La Porte Narbonnaise, majestueuse entrée de la cité de Carcassonne, est un symbole emblématique de l’histoire militaire et architecturale de cette forteresse médiévale. Avec ses tours imposantes et son design défensif, elle témoigne du génie militaire des bâtisseurs qui ont conçu cette cité pour résister aux assauts au fil des siècles. En franchissant cette porte, les visiteurs sont transportés dans un passé riche en histoires de batailles, de sièges et de stratégies défensives.
+  object_name: Porte_Narbonnaise
+  offset_x: 10
+  offset_y: 10
+  offset_z: 10
