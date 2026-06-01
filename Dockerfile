@@ -34,8 +34,10 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js and npm for asset compilation
-RUN curl -fsSL https://deb.nodesource.com/setup_25.x | bash -
-RUN apt-get install -y nodejs npm
+RUN curl -fsSL https://deb.nodesource.com/setup_25.x | bash - \
+  && apt-get install -y nodejs \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
