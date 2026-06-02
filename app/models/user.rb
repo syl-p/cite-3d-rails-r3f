@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  enum :role, { user: 0, admin: 1 }, default: :user
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email_address, presence: true, uniqueness: { case_sensitive: false }

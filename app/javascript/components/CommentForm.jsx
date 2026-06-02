@@ -22,6 +22,8 @@ export default function CommentForm({part_id}) {
     return <form onSubmit={handleSubmit}>
         <Label for="content" className="mb-3">Vous avez déjà visité cette partie de la cité ? Donnez nous vos impressions.</Label>
         <Textarea onChange={e => setData('content', e.target.value)} defaultValue={data.content}></Textarea>
+         {error && <p className="text-red-500 mt-2">{error}</p>}
+        
         <div className="flex justify-end">
             <Button type="submit" className="my-3" disabled={data.content === "" || processing}>Commenter</Button>
         </div>

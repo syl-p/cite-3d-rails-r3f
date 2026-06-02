@@ -3,13 +3,12 @@ import {Canvas} from "@react-three/fiber";
 import Experience from "@/components/Experience.jsx";
 import {useEffect, useMemo, useState} from "react";
 import {LevaPanel, levaStore} from "leva";
-import {Stats} from "@react-three/drei"
 import FlashMessages from "@/components/FlashMessages.jsx";
 import SplashScreen from "@/components/SplashScreen.jsx";
 import useAppStore from "@/stores/useAppStore";
-import Header from './components/Header.jsx';
+import Header from '@/components/Header.jsx';
 
-export default function Layout({children}) {
+export default function AppLayout({children}) {
     const { part, parts} = usePage().props
     const [currentIndex, setCurrentIndex] = useState(0);
     const showSpots = useAppStore((s) => s.showSpots)
@@ -35,13 +34,13 @@ export default function Layout({children}) {
     const baseClass = "relative lg:sticky lg:left-0 lg:top-4 border mb-6 lg:mb-0 rounded shadow overflow-hidden transition-all duration-700 ease-in-out "
         if (part) {
             // Show: moitié/moitié
-            return baseClass + 'lg:w-3/6 h-[50vh] lg:h-[calc(100vh-theme(spacing.24))]'
+            return baseClass + 'lg:w-3/6 h-[50dvh] lg:h-[calc(100dvh-theme(spacing.24))]'
         } else if (showSpots) {
             // Index + showSpots: canvas 4/6, panel 2/6
-            return baseClass + 'lg:w-4/6 h-[calc(100vh-theme(spacing.24))]'
+            return baseClass + 'lg:w-4/6 h-[calc(100dvh-theme(spacing.24))]'
         } else {
             // Index + immersif: canvas full, panel caché
-            return baseClass + 'lg:w-full h-[calc(100vh-theme(spacing.24))]'
+            return baseClass + 'lg:w-full h-[calc(100dvh-theme(spacing.24))]'
         }
     }, [part, showSpots])
 

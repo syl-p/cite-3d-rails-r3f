@@ -1,7 +1,8 @@
 import { createInertiaApp } from '@inertiajs/react'
 import { createElement } from 'react'
 import { createRoot } from 'react-dom/client'
-import Layout from "../Layout.jsx";
+import AdminLayout from '@/layouts/AdminLayout.jsx';
+import AppLayout from '@/layouts/AppLayout.jsx';
 
 createInertiaApp({
   // Set default page title
@@ -27,7 +28,18 @@ createInertiaApp({
     // and use the following lines.
     // see https://inertia-rails.dev/guide/pages#default-layouts
     //
-    page.default.layout ||= (page) => createElement(Layout, null, page)
+    // page.default.layout ||= (page) => createElement(Layout, null, page)
+
+    // Use AdminLayout for admin pages, AppLayout for the rest
+    if (name.startsWith("admin/")) {
+      page.default.layout =
+        page.default.layout ||
+        ((page) => createElement(AdminLayout, null, page));
+    } else {
+      page.default.layout =
+        page.default.layout ||
+        ((page) => createElement(AppLayout, null, page));
+    }
 
     return page
   },

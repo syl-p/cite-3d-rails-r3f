@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   namespace "settings" do
     resources "profile", only: [ :update, :destroy ]
   end
+
+  namespace :admin do
+    resources :parts
+  end
 end

@@ -3,6 +3,7 @@ import { Button } from '../../components/ui/button.jsx'
 import { Input } from '../../components/ui/input.jsx'
 import { Label } from '../../components/ui/label.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card.jsx'
+import GuestLayout from '@/layouts/GuestLayout.jsx'
 
 export default function New() {
     const { data, setData, post, processing, errors } = useForm({
@@ -56,3 +57,5 @@ export default function New() {
     </form>
     )
 }
+
+New.layout = page => <GuestLayout>{page}</GuestLayout>
