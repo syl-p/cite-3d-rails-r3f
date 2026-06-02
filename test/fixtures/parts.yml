@@ -6,7 +6,7 @@ one:
   body: Au centre de la majestueuse cité de Carcassonne se dresse le Château Comtal, véritable cœur historique et militaire de cette forteresse emblématique. Ce monument, bien plus qu’un simple château, incarne le pouvoir des seigneurs du Languedoc et témoigne de siècles d’histoire, de batailles et de transformations. Chaque pierre raconte une histoire, chaque tour est un vestige des âges tumultueux qui ont façonné cette région.
   object_name: chateau_comtal
   offset_x: 9
-  offset_y: 10
+  offset_y: 20
   offset_z: 5
 
 two:
@@ -22,7 +22,34 @@ three:
   title: Porte Narbonnaise
   description: Découvrez la Porte Narbonnaise, l’entrée monumentale de la cité de Carcassonne. Admirez son architecture médiévale, ses tours imposantes et son rôle stratégique dans la défense de la cité. Un symbole emblématique de l’histoire militaire de Carcassonne.
   body: La Porte Narbonnaise, majestueuse entrée de la cité de Carcassonne, est un symbole emblématique de l’histoire militaire et architecturale de cette forteresse médiévale. Avec ses tours imposantes et son design défensif, elle témoigne du génie militaire des bâtisseurs qui ont conçu cette cité pour résister aux assauts au fil des siècles. En franchissant cette porte, les visiteurs sont transportés dans un passé riche en histoires de batailles, de sièges et de stratégies défensives.
-  object_name: Porte_Narbonnaise
+  object_name: porte_narbonnaise
   offset_x: 10
-  offset_y: 10
+  offset_y: 15
   offset_z: 10
+
+four:
+  title: Porte de l'Aude
+  description: Explorez la Porte de l’Aude, une entrée historique de la cité de Carcassonne. Admirez son architecture médiévale et son rôle dans la défense de la cité. Un passage incontournable pour découvrir l’histoire militaire de Carcassonne.
+  body: La Porte de l’Aude, située au sud de la cité de Carcass
+  object_name: porte_de_laude
+  offset_x: -30
+  offset_y: 20
+  offset_z: 4
+
+five:
+  title: Theatre de la Cite
+  description: Découvrez le Théâtre de la Cité, un lieu culturel emblématique de Carcass
+  body: Le Théâtre de la Cité, situé au cœur de Carcassonne, est un lieu culturel emblématique qui offre une programmation riche et variée tout au long de l’année. Ce théâtre, qui allie modernité et charme historique, accueille des spectacles de théâtre, de musique, de danse et bien plus encore. C’est un espace où la culture et l’art prennent vie, offrant aux visiteurs une expérience unique au sein de la cité médiévale.
+  object_name: theatre
+  offset_x: 10
+  offset_y: 25
+  offset_z: 10
+
+six:
+  title: Porte St Nazaire
+  description: Découvrez la Porte Saint-Nazaire, une entrée historique de la cité de Car
+  body: La Porte Saint-Nazaire, située à l’est de la cité de Carcassonne, est une entrée historique qui témoigne de l’ingéniosité des bâtisseurs médiévaux. Avec son architecture défensive et son rôle stratégique dans la protection de la cité, cette porte est un symbole important de l’histoire militaire de Carcassonne. En franchissant cette porte, les visiteurs peuvent imaginer les nombreux soldats et habitants qui ont traversé ce passage au fil des siècles.
+  object_name: porte_st_nazaire
+  offset_x: 8
+  offset_y: 25
+  offset_z: 35
