@@ -4,7 +4,7 @@ export default function Medium({medium}) {
     return <Dialog>
         <DialogTrigger className="cursor-pointer">
             <img src={medium.file_url} 
-                className="w-fit h-full w-full rounded-xl object-cover"/>
+                className="h-full w-full rounded-xl object-cover"/>
         </DialogTrigger>
         <DialogContent>
             {/* <DialogHeader>
